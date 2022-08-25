@@ -14,7 +14,7 @@ void train_yolo(char *cfgfile, char *weightfile)
     printf("Learning Rate: %g, Momentum: %g, Decay: %g\n", net->learning_rate, net->momentum, net->decay);
     int imgs = net->batch*net->subdivisions;
     int i = *net->seen/imgs;
-    data train, buffer;
+    
 
 
     layer l = net->layers[net->n - 1];
