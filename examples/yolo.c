@@ -190,7 +190,7 @@ void validate_yolo_recall(char *cfg, char *weights)
     int classes = l.classes;
     int side = l.side;
 
-    int j, k;
+   
     FILE **fps = calloc(classes, sizeof(FILE *));
     for(j = 0; j < classes; ++j){
         char buff[1024];
