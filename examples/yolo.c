@@ -27,11 +27,7 @@ void train_yolo(char *cfgfile, char *weightfile)
     //int N = plist->size;
     char **paths = (char **)list_to_array(plist);
 
-    load_args args = {0};
-    args.w = net->w;
-    args.h = net->h;
-    args.paths = paths;
-    args.n = imgs;
+   
     args.m = plist->size;
     args.classes = classes;
     args.jitter = jitter;
