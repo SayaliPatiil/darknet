@@ -14,7 +14,7 @@ void train_yolo(char *cfgfile, char *weightfile)
     printf("Learning Rate: %g, Momentum: %g, Decay: %g\n", net->learning_rate, net->momentum, net->decay);
     int imgs = net->batch*net->subdivisions;
     int i = *net->seen/imgs;
-    data train, buffer;
+    
 
 
     layer l = net->layers[net->n - 1];
@@ -27,11 +27,7 @@ void train_yolo(char *cfgfile, char *weightfile)
     //int N = plist->size;
     char **paths = (char **)list_to_array(plist);
 
-    load_args args = {0};
-    args.w = net->w;
-    args.h = net->h;
-    args.paths = paths;
-    args.n = imgs;
+   
     args.m = plist->size;
     args.classes = classes;
     args.jitter = jitter;
@@ -194,7 +190,7 @@ void validate_yolo_recall(char *cfg, char *weights)
     int classes = l.classes;
     int side = l.side;
 
-    int j, k;
+   
     FILE **fps = calloc(classes, sizeof(FILE *));
     for(j = 0; j < classes; ++j){
         char buff[1024];
@@ -202,17 +198,7 @@ void validate_yolo_recall(char *cfg, char *weights)
         fps[j] = fopen(buff, "w");
     }
 
-    int m = plist->size;
-    int i=0;
-
-    float thresh = .001;
-    float iou_thresh = .5;
-    float nms = 0;
-
-    int total = 0;
-    int correct = 0;
-    int proposals = 0;
-    float avg_iou = 0;
+    
 
     for(i = 0; i < m; ++i){
         char *path = paths[i];
